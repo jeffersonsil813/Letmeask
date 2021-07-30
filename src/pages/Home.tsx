@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom"
+import toast, { Toaster } from 'react-hot-toast'
 
 import { useAuth } from '../hooks/useAuth';
 
@@ -43,6 +44,14 @@ export function Home() {
             return
         }
 
+        if (roomRef.val().endedAt) {
+            // endedAt existe? Então a sala já foi encerrada
+            toast.error('Room already closed!', {
+                duration: 2000
+            })
+            return
+        }
+
         history.push(`rooms/${roomCode}`)
     }
 
@@ -74,6 +83,8 @@ export function Home() {
                     </form>
                 </div>
             </main>
+
+            <Toaster />
         </div>
     </>
 }
