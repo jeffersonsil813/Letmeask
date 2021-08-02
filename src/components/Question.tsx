@@ -1,4 +1,6 @@
 import { ReactNode } from "react"
+// pacote para facilitar a utlização de muitas classes
+import cx from 'classnames'
 
 import '../styles/question.scss'
 
@@ -10,15 +12,24 @@ type QuestionProps = {
     }
     // qualquer conteúdo jsx
     children?: ReactNode
+    isAnswered?: boolean
+    isHighlighted?: boolean
 }
 
 export function Question({
     content,
     author,
-    children
+    children,
+    isAnswered = false,
+    isHighlighted = false
 }: QuestionProps) {
     return (
-        <div className="question">
+        <div className={cx(
+            'question',
+            // class: boolean 
+            { answered: isAnswered },
+            { highlighted: isHighlighted && !isAnswered }
+        )}>
             <p>{content}</p>
             <footer>
                 <div className="user-info">

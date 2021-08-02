@@ -40,7 +40,9 @@ export function Home() {
 
         // A sala existe?
         if (!roomRef.exists()) {
-            alert('Room does not exists.')
+            toast.error('Room does not exists!', {
+                duration: 2000
+            })
             return
         }
 

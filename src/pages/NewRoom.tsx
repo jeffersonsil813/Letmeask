@@ -33,8 +33,8 @@ export function NewRoom() {
             authorId: user?.id,
         })
 
-        // Depois de criar a sala, o usuário é redirecionado para a sala com o id dela. Key = id da sala.
-        history.push(`/room/${firebaseRoom.key}`)
+        // Depois de criar a sala, o usuário(criador/adm) é redirecionado para a sala com o id dela. Key = id da sala.
+        history.push(`/admin/rooms/${firebaseRoom.key}`)
     }
 
     return <>
